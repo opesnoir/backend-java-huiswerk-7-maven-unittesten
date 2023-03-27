@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Person {
     //variabelen
@@ -16,8 +17,6 @@ public class Person {
     ArrayList<Person> pets;
 
     //constructors
-    //constructors
-    //zonder middle name
     public Person(String name, String lastName, char sex, int age) {
         this.name = name;
         this.lastName = lastName;
@@ -115,4 +114,6 @@ public class Person {
     }
 
     //methoden
+
 }
+
