@@ -2,6 +2,8 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PersonTest {
@@ -22,65 +24,77 @@ class PersonTest {
         Person p = new Person("jan", "balk", 'm', 16);
         //act
         p.setName("fleur");
-        String outputSetName = "fleur";
         //assert
-        assertEquals("fleur", outputSetName);
+        assertEquals("fleur", p.getName());
     }
 
     @Test
     void getMiddleName() {
         //arrange
+        Person p = new Person("jan", "peter","balk", 'm', 16);
         //act
+        String outputGetMiddleName = p.getMiddleName();
         //assert
+        assertEquals("peter", outputGetMiddleName);
     }
 
     @Test
     void getLastName() {
         //arrange
+        Person p = new Person("jan", "peter","balk", 'm', 16);
         //act
+        String outputLastName = p.getLastName();
         //assert
+        assertEquals("balk", outputLastName);
     }
 
     @Test
     void setLastName() {
         //arrange
+        Person p = new Person("jan", "peter","balk", 'm', 16);
         //act
+        p.setLastName("regen");
         //assert
+        assertEquals("regen", p.getLastName());
     }
 
     @Test
     void getSex() {
         //arrange
+        Person p = new Person("jan", "peter","balk", 'm', 16);
         //act
+        char outcomeGetSex = p.getSex();
         //assert
+        assertEquals('m', outcomeGetSex);
     }
 
     @Test
     void setSex() {
         //arrange
+        Person p = new Person("jan", "peter","balk", 'm', 16);
         //act
+        p.setSex('f');
         //assert
+        assertEquals('f', p.getSex());
     }
 
     @Test
     void getAge() {
         //arrange
+        Person p = new Person("jan", "peter","balk", 'm', 16);
         //act
+        /*int outcomeGetAge = p.getAge();*/
         //assert
+        assertEquals(16, p.getAge());
     }
 
     @Test
     void setAge() {
-        //arrange
+        Person p = new Person("jan", "peter","balk", 'm', 16);
         //act
+        p.setAge(21);
         //assert
-    }
-
-    @Test
-    void getMother() {
-        //arrange
-        //act
-        //assert
+        assertEquals(21, p.getAge());
     }
 
     @Test
@@ -165,5 +179,18 @@ class PersonTest {
         //arrange
         //act
         //assert
+    }
+
+    @Test
+    void testAddParents() {
+        //arrange
+        Person p = new Person("jan", "peter","balk", 'm', 16);
+        Person father = new Person("piet", "peter","balk", 'm', 16);
+        Person mother = new Person("els", "peter","balk", 'm', 16);
+        Person child = new Person("jan", "peter","balk", 'm', 16);
+        //act
+        child.addParents(child, father, mother);
+        //assert
+        assertEquals("els", child.getMother().getName());
     }
 }

@@ -12,18 +12,19 @@ public class Person {
     private int age;
     private Person mother;
     private Person father;
-    ArrayList<Person> siblings;
-    ArrayList<Person> children;
-    ArrayList<Person> pets;
+    List<Person> siblings;
+    List<Person> children;
+    List<Person> pets;
 
     //constructors
+
     public Person(String name, String lastName, char sex, int age) {
         this.name = name;
         this.lastName = lastName;
         this.sex = sex;
         this.age = age;
     }
-    //met middle name
+
     public Person(String name, String middleName, String lastName, char sex, int age) {
         this.name = name;
         this.middleName = middleName;
@@ -89,31 +90,50 @@ public class Person {
         this.father = father;
     }
 
-    public ArrayList<Person> getSiblings() {
+    public List<Person> getSiblings() {
         return siblings;
     }
 
-    public void setSiblings(ArrayList<Person> siblings) {
+    public void setSiblings(List<Person> siblings) {
         this.siblings = siblings;
     }
 
-    public ArrayList<Person> getChildren() {
+    public List<Person> getChildren() {
         return children;
     }
 
-    public void setChildren(ArrayList<Person> children) {
+    public void setChildren(List<Person> children) {
         this.children = children;
     }
 
-    public ArrayList<Person> getPets() {
+    public List<Person> getPets() {
         return pets;
     }
 
-    public void setPets(ArrayList<Person> pets) {
+    public void setPets(List<Person> pets) {
         this.pets = pets;
     }
 
     //methoden
+    public void addParents(Person child, Person father, Person mother){
+        child.setMother(mother);
+        child.setFather(father);
+        mother.addChildToChildren(mother, child);
+        father.addChildToChildren(father, child);
+    }
+
+
+
+    public void addChildToChildren(Person parent, Person child){
+        List<Person> kids = new ArrayList<>();
+        if (parent.getChildren() != null){
+            for (Person person : parent.getChildren()) {
+                kids.add(person);
+            }
+        }
+        kids.add(child);
+        parent.setChildren(kids);
+    }
 
 }
 
